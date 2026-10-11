@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: AgentScope-2.0-quickstart
