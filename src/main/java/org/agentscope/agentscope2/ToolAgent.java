@@ -31,6 +31,15 @@ public class ToolAgent {
                 default -> user.username() + ":基础权益";
             };
         }
+        @Tool(
+                name = "add",
+                description = "计算器，计算式调用这个工具",
+                readOnly = true
+        )
+        public int add(@ToolParam(name = "a",description = "第一个计算参数") int a,@ToolParam(name = "b",description = "第二个计算参数")int b){
+            System.out.println("[调用计算工具]");
+            return a + b;
+        }
     }
 
     public static void main(String[] args) {
@@ -52,11 +61,14 @@ public class ToolAgent {
                     .put(UserContext.class,new UserContext("天宇","gold"))
                     .build();
 
-            Msg r1 = agent.call(new UserMessage("杭州今天天气怎么样"), ctx).block();
-            System.out.println(r1.getTextContent());
+//            Msg r1 = agent.call(new UserMessage("杭州今天天气怎么样"), ctx).block();
+//            System.out.println(r1.getTextContent());
+//
+//            Msg r2 = agent.call(new UserMessage("我是谁？我有什么会员权益？"), ctx).block();
+//            System.out.println(r2.getTextContent());
 
-            Msg r2 = agent.call(new UserMessage("我是谁？我有什么会员权益？"), ctx).block();
-            System.out.println(r2.getTextContent());
+            Msg r3 = agent.call(new UserMessage("1 + 1 等于多少"), ctx).block();
+            System.out.println(r3.getTextContent());
         }
     }
 }
