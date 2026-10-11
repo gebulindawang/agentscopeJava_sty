@@ -45,6 +45,7 @@ public class SteamAgent {
                         }else if (event.getType() == AgentEventType.TOOL_CALL_START){
                             System.out.println();
                             System.out.println("[调用工具]"+ ((ToolCallStartEvent) event).getToolCallName());
+                            System.out.println("[调用序号]" + ((ToolCallStartEvent) event) .getToolCallId());
                         }
                     })
                     .blockLast();
